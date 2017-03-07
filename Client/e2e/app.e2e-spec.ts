@@ -1,10 +1,10 @@
-import { SellerSitePage } from './app.po';
+import { Verkefni3Page } from './app.po';
 
-describe('seller-site App', function() {
-  let page: SellerSitePage;
+describe('verkefni3 App', () => {
+  let page: Verkefni3Page;
 
   beforeEach(() => {
-    page = new SellerSitePage();
+    page = new Verkefni3Page();
   });
 
   it('should display message saying app works', () => {
