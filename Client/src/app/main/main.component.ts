@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SellersService, Seller } from '../sellers.service';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-//import {NgbdModalContent} from './edit';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbdModalContent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
 
   private sellers: Seller[];
 
-  constructor(private service : SellersService) { }
+  constructor(private service : SellersService, /*private modalService: NgbModal*/) { }
 
   ngOnInit() {
 
@@ -22,14 +22,11 @@ export class MainComponent implements OnInit {
     });
   }
 
-
   open() {
     console.log("virkar");
     let seller = {name: "Jon"};
-    //const modalRef = this.modalService.open(NgbdModalContent);
-   // modalRef.componentInstance.name = 'World';
     this.service.newSeller(seller).subscribe(result => {
-      console.log("The result: " + result);
+      console.log("The result: " + result.name);
     });
   }
 

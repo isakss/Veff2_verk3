@@ -1,3 +1,4 @@
+<template ngbModalContainer></template>
 <button class="btn btn-lg btn-outline-primary" (click)="open()">Bæta við</button>
 
 
@@ -7,8 +8,12 @@
         <th>Flokkur</th>
 
         <tr *ngFor="let seller of sellers">
-            <td> {{ seller.name }}</td>
-            <td> {{ seller.category }}</td>
+            <td> {{ seller.name }} </td>
+            <td> {{ seller.category }} </td>
         </tr>
     </table>
 </div>
+
+<ngb-alert type="info">
+    hi
+</ngb-alert>
