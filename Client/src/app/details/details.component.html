@@ -1,2 +1,5 @@
-<p *ngIf="seller">
-    {{seller.name}}</p>
+<div *ngIf="seller" class="container">
+    <h2>{{seller.name}}</h2>
+    <p>{{seller.category}}</p>
+    <img src="{{seller.imagePath}}" alt="Mynd af seljanda">
+</div>
