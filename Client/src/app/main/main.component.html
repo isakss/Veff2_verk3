@@ -10,6 +10,7 @@
         <tr *ngFor="let seller of sellers">
             <td> {{ seller.name }} </td>
             <td> {{ seller.category }} </td>
+            <td><button class="btn btn-lg btn-outline-primary" (click)="goToDetails()">Sjá nánari lýsingu</button></td>
         </tr>
     </table>
 </div>

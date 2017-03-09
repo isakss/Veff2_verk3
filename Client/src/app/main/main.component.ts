@@ -14,13 +14,17 @@ export class MainComponent implements OnInit {
 
   private sellers: Seller[];
 
-  constructor(private service : SellersService, private modalService: NgbModal) { }
+  constructor(private service : SellersService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
 
     this.service.getSellers().subscribe(result => {
       this.sellers = result;
     });
+  }
+
+  goToDetails(id: number) {
+    this.router.navigate(["details"]);
   }
 
    addSeller() {

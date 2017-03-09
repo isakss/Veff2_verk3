@@ -10,13 +10,12 @@ import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'app works!';
+  title = 'Sambland';
   
   //private seller: Seller;
   constructor(private service : SellersService) { }
 
   ngOnInit(){
-
  
   }
 

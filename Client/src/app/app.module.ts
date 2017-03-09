@@ -35,6 +35,10 @@ import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
     path: 'main',
     component: MainComponent
 
+  },
+  {
+    path: 'details',
+    component: DetailsComponent
   }])
   ], 
   providers: [SellersService],

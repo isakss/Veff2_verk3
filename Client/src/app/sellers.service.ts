@@ -14,6 +14,8 @@ export interface Seller {
 @Injectable()
 export class SellersService {
 
+  id: number;
+  
   constructor(private http: Http) { }
 
   getSellers() : Observable<Seller[]> {
