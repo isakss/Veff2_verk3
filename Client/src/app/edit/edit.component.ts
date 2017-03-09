@@ -1,9 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-//import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-
-
+export class Seller {
+  name: string;
+  id: number;
+  category: string;
+  imagePath: string;
+}
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -11,10 +14,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  constructor() {}
+  seller: Seller;
+  constructor(private activeModal: NgbActiveModal) {}
     ngOnInit() {
   }
 
+  onCancel(){
+    this.activeModal.dismiss();
+  }
+  onOk(){
+    this.activeModal.close(this.seller);
+  }
   open() {
    // const modalRef = this.modalService.open(NgbdModalContent);
    // modalRef.componentInstance.name = 'World';

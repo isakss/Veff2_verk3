@@ -11,13 +11,15 @@ import { MainComponent } from './main/main.component';
 import { DetailsComponent } from './details/details.component';
 import { SellersService } from './sellers.service';
 import { EditComponent } from './edit/edit.component';
+import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     DetailsComponent,
-    EditComponent
+    EditComponent,
+    SellerDlgComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { EditComponent } from './edit/edit.component';
   }])
   ], 
   providers: [SellersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EditComponent]
 })
 export class AppModule { }

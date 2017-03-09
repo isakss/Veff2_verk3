@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SellersService, Seller } from './sellers.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent implements OnInit{
   title = 'app works!';
-
+  
   //private seller: Seller;
   constructor(private service : SellersService) { }
 
@@ -19,4 +19,6 @@ export class AppComponent implements OnInit{
 
  
   }
+
+ 
 }
