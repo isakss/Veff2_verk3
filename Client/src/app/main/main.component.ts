@@ -24,6 +24,7 @@ export class MainComponent implements OnInit {
   }
 
   goToDetails(id: number) {
+    this.service.id = id;
     this.router.navigate(["details"]);
   }
 

@@ -26,9 +26,9 @@ export class SellersService {
     });
   }
 
-  getSellerById(id: number): Observable<Seller> {
+  getSellerById(): Observable<Seller> {
 
-    return this.http.get('http://localhost:5000/api/sellers/' + id)
+    return this.http.get('http://localhost:5000/api/sellers/' + String(this.id))
     .map(response => {
       return <Seller> response.json();
     });

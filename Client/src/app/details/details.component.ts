@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { SellersService, Seller } from '../sellers.service';
+//import { Seller } from '../edit/edit.component';
+
+/*export class Seller {
+  name: string;
+  id: number;
+  category: string;
+  imagePath: string;
+}*/
 
 @Component({
   selector: 'app-details',
@@ -7,9 +16,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor() { }
+  seller: Seller;
+  
+  constructor(private service: SellersService) { }
 
   ngOnInit() {
+     this.service.getSellerById().subscribe(result => {
+      this.seller = result;
+      console.log(this.seller.name);
+    });
   }
 
 }
