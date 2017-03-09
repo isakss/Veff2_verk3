@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbTabset, NgbTab } from '@ng-bootstrap/ng-bootstrap';
+import { SellersService, Seller } from '../sellers.service';
 
 @Component({
   selector: 'app-details',
@@ -8,9 +9,15 @@ import { NgbTabset, NgbTab } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor() { }
+  seller: Seller;
+  
+  constructor(private service: SellersService) { }
 
   ngOnInit() {
+     this.service.getSellerById().subscribe(result => {
+      this.seller = result;
+      console.log(this.seller.name);
+    });
   }
 
 }
