@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbTabset, NgbTab } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-details',
@@ -13,3 +14,4 @@ export class DetailsComponent implements OnInit {
   }
 
 }
+
