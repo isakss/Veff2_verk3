@@ -1,2 +1,18 @@
-<p *ngIf="seller">
-    {{seller.name}}</p>
+<div>
+    <table *ngIf="seller">
+        <tr>
+            <td> {{seller.name}} </td>
+        </tr>
+        <tr>
+            <td> {{seller.category}} </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="{{seller.imagePath}}" alt="seller.name" style="width:304px;height:228px;">
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+
+</div>
