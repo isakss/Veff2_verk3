@@ -8,13 +8,13 @@
     <ngb-tabset>
         <ngb-tab title='Products' (select)="hi(this)" (click)="hi(this)">
             <template ngbTabContent>
-        <p>My name is doggo, I am the most pupperiest pupper in the world</p>
+                <app-all-products></app-all-products>
       </template>
         </ngb-tab>
         <ngb-tab>
             <template ngbTabTitle><b>Top Ten Products</b></template>
             <template ngbTabContent>
-        <p>something something, words something...</p>
+                <app-top-products></app-top-products>
       </template>
         </ngb-tab>
     </ngb-tabset>
