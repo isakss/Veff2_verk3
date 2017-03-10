@@ -1,6 +1,27 @@
+<p>
+    details works!
+</p>
+
 <div *ngIf="seller" class="container">
     <h2>{{seller.name}}</h2>
     <p>{{seller.category}}</p>
     <img src="{{seller.imagePath}}" alt="Mynd af seljanda">
-    <button></button>
+
+
+</div>
+
+<div class='Tabs'>
+    <ngb-tabset>
+        <ngb-tab title='Products'>
+            <template ngbTabContent>
+        <p>My name is doggo, I am the most pupperiest pupper in the world</p>
+      </template>
+        </ngb-tab>
+        <ngb-tab>
+            <template ngbTabTitle><b>Top Ten Products</b></template>
+            <template ngbTabContent>
+        <p>something something, words something...</p>
+      </template>
+        </ngb-tab>
+    </ngb-tabset>
 </div>

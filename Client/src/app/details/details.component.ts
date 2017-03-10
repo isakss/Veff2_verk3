@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbTabset, NgbTab } from '@ng-bootstrap/ng-bootstrap';
 import { SellersService, Seller } from '../sellers.service';
-import {ToasterContainerComponent, ToasterService} from 'angular2-toaster';
-//import { Seller } from '../edit/edit.component';
 
-/*export class Seller {
-  name: string;
-  id: number;
-  category: string;
-  imagePath: string;
-}*/
 
 @Component({
   selector: 'app-details',
@@ -29,3 +22,4 @@ export class DetailsComponent implements OnInit {
   }
 
 }
+
