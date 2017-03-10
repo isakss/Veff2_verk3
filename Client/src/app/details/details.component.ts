@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SellersService, Seller } from '../sellers.service';
+import {ToasterContainerComponent, ToasterService} from 'angular2-toaster';
 //import { Seller } from '../edit/edit.component';
 
 /*export class Seller {

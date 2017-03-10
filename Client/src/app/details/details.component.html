@@ -1,18 +1,6 @@
-<div>
-    <table *ngIf="seller">
-        <tr>
-            <td> {{seller.name}} </td>
-        </tr>
-        <tr>
-            <td> {{seller.category}} </td>
-        </tr>
-        <tr>
-            <td>
-                <img src="{{seller.imagePath}}" alt="seller.name" style="width:304px;height:228px;">
-            </td>
-        </tr>
-    </table>
-</div>
-<div>
-
+<div *ngIf="seller" class="container">
+    <h2>{{seller.name}}</h2>
+    <p>{{seller.category}}</p>
+    <img src="{{seller.imagePath}}" alt="Mynd af seljanda">
+    <button></button>
 </div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 
 import { AppComponent } from './app.component';
@@ -11,7 +12,8 @@ import { MainComponent } from './main/main.component';
 import { DetailsComponent } from './details/details.component';
 import { SellersService } from './sellers.service';
 import { EditComponent } from './edit/edit.component';
-import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
+import { AllProductsComponent } from './all-products/all-products.component';
+import { TopProductsComponent } from './top-products/top-products.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
     MainComponent,
     DetailsComponent,
     EditComponent,
-    SellerDlgComponent
+    AllProductsComponent,
+    TopProductsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ToasterModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([{
     path: '',
