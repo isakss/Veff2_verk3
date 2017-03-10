@@ -45,6 +45,6 @@ import { TopProductsComponent } from './top-products/top-products.component';
   ], 
   providers: [SellersService],
   bootstrap: [AppComponent],
-  entryComponents: [EditComponent]
+  entryComponents: [EditComponent, AllProductsComponent]
 })
 export class AppModule { }

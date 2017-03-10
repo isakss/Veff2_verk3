@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { Seller } from '../sellers.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellersService, Seller } from '../sellers.service';
 
 @Component({
@@ -21,11 +20,5 @@ export class EditComponent implements OnInit {
   }
   onOk(){
     this.activeModal.close(this.seller);
-  }
-
- 
-  open() {
-   // const modalRef = this.modalService.open(NgbdModalContent);
-   // modalRef.componentInstance.name = 'World';
   }
 }

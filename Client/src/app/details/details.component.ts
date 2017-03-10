@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbTabset, NgbTab } from '@ng-bootstrap/ng-bootstrap';
 import { SellersService, Seller } from '../sellers.service';
+import { AllProductsComponent } from '../all-products/all-products.component';
 
 @Component({
   selector: 'app-details',
@@ -18,6 +19,10 @@ export class DetailsComponent implements OnInit {
       this.seller = result;
       console.log(this.seller.name);
     });
+  }
+
+  hi(e: any) {
+    console.log("hiiiii tehre");
   }
 
 }
