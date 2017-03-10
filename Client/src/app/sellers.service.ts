@@ -15,6 +15,7 @@ export interface Seller {
 export class SellersService {
 
   id: number;
+  //seller: Seller;
   
   constructor(private http: Http) { }
 
@@ -34,9 +35,20 @@ export class SellersService {
     });
   }
 
+  updateSeller(seller: Seller) : Observable<Seller> {
+    console.log("fer hingad?");
+    let sellerString = JSON.stringify(seller);
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers});
+    console.log("id: " + seller.id);
+    console.log("name: " + seller.name);
+    //seller.id = String(seller.id);
+    return this.http.put(('http://localhost:5000/api/sellers/' + seller.id), seller)
+    .map(response => response.json());
+
+  }
+
   newSeller(body: any) : Observable<Seller> {
-    console.log("fer eg hingad?");
-   // body.name = "karen";
     let bodyString = JSON.stringify(body);
     let headers    = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options    = new RequestOptions({ headers: headers }); // Create a request option
@@ -46,10 +58,4 @@ export class SellersService {
     .map(response => response.json()) // ...and calling .json() on the response to return data
     //.catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
     }   
-   /* return this.http.post("http://localhost:5000/api/sellers")
-    .map(response => {
-
-    });
-  }*/
-
 }

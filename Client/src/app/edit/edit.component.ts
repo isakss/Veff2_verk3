@@ -3,13 +3,6 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { Seller } from '../sellers.service';
 import { SellersService, Seller } from '../sellers.service';
 
-
-/*export class Seller {
-  name: string;
-  id: number;
-  category: string;
-  imagePath: string;
-}*/
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -29,6 +22,8 @@ export class EditComponent implements OnInit {
   onOk(){
     this.activeModal.close(this.seller);
   }
+
+ 
   open() {
    // const modalRef = this.modalService.open(NgbdModalContent);
    // modalRef.componentInstance.name = 'World';

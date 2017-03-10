@@ -28,6 +28,22 @@ export class MainComponent implements OnInit {
     this.router.navigate(["details"]);
   }
 
+   onEdit(seller: Seller) {
+      const modalInstance = this. modalService.open(EditComponent);
+      modalInstance.componentInstance.seller = seller
+      modalInstance.result.then(obj => {
+        console.log("Edit Dialog virkar!");
+        console.log("hi" + obj.name);
+     // console.log(modalInstance.componentInstance.seller);
+      this.service.updateSeller(obj).subscribe(result => {
+        console.log("The result: " + result.name);
+        });
+      }).catch(err => {
+        console.log("Edit Dialog virkar ekki :(");
+      });
+      
+  }
+
    addSeller() {
     const modalInstance = this. modalService.open(EditComponent);
     modalInstance.componentInstance.seller = {
