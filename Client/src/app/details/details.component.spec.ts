@@ -57,7 +57,7 @@ describe('DetailsComponent', () => {
         useValue: mockTabset
       },
       {
-        provide: NgbTabset,
+        provide: NgbTabset
 
       }
       ]

@@ -1,6 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductComponent } from './product-dlg.component';
+import { SellersService, Seller, Product } from '../sellers.service';
+
+const mockActiveModal = {
+  name: "jon",
+  dismiss(name: "jon") {
+  }
+}
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
@@ -8,7 +17,12 @@ describe('ProductComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductComponent ]
+      declarations: [ ProductComponent ],
+      imports: [FormsModule],
+      providers: [{
+        provide: NgbActiveModal,
+        useValue: mockActiveModal
+      }]
     })
     .compileComponents();
   }));

@@ -8,22 +8,21 @@ describe('AllProductsComponent', () => {
   let fixture: ComponentFixture<AllProductsComponent>;
 
   const mockService = {
-  getProductsSuccess: true,
-  getProducts: function() {
-    return {
-      subscribe: function(success, error) {
-       /* length = 3;
-        if(mockService.getProductsSuccess === true) {
-          success();
+    getProductsSuccess: true,
+    getProducts: function() {
+      return {
+        subscribe: function(success, error) {
+        /* length = 3;
+          if(mockService.getProductsSuccess === true) {
+            success();
+          }
+          else {
+            error();
+          }*/
         }
-        else {
-          error();
-        }*/
       }
     }
   }
-
-}
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +30,7 @@ describe('AllProductsComponent', () => {
       providers: [{
         provide: SellersService, 
         useValue: mockService
-}      ]
+      }]
     })
     .compileComponents();
   }));
