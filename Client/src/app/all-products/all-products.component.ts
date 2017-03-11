@@ -16,6 +16,11 @@ export class AllProductsComponent implements OnInit {
 
   ngOnInit() {
     this.service.getProducts().subscribe(result => {
+       for (let i = 0; i < result.length; i++) {
+          if (result[i].imagePath == "" || result[i].imagePath == undefined) {
+            result[i].imagePath = "https://shop.spandex.com/_ui/mobile/theme-blue/images/missing-store-300x300.jpg";
+        }
+       }
       this.products = result;
     });
   }
