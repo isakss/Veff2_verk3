@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbTabset, NgbTab } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTabset, NgbTab, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellersService, Seller, Product } from '../sellers.service';
+import { ProductComponent } from '../product-dlg/product-dlg.component';
 import { AllProductsComponent } from '../all-products/all-products.component';
 import { TopProductsComponent } from '../top-products/top-products.component';
+
 
 @Component({
   selector: 'app-details',
@@ -13,8 +15,9 @@ export class DetailsComponent implements OnInit {
 
   seller: Seller;
   products: Product[];
+
   
-  constructor(private service: SellersService) { }
+  constructor(private service: SellersService, private modalService: NgbModal) { }
 
   ngOnInit() {
      this.service.getSellerById().subscribe(result => {
@@ -26,9 +29,25 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  hi(e: any) {
-    console.log("hiiiii tehre");
+  addProduct() {
+    const modalInstance = this.modalService.open(ProductComponent);
+    modalInstance.componentInstance.product = {
+      name: "Batman bolur",
+      price: "2500",
+      quantityInStock: "1",
+      imagePath: ""
+    }
+
+     modalInstance.result.then(obj => {
+      this.service.newProduct(obj).subscribe(result => {
+      console.log("The result: " + result.name);
+    });
+    }).catch(err => {
+      console.log("Dialog virkar ekki :(");
+    });
   }
+  
+
 
 }
 

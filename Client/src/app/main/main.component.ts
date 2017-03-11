@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SellersService, Seller } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditComponent } from '../edit/edit.component';
+import {ToasterContainerComponent, ToasterService} from 'angular2-toaster';
 
 
 @Component({
@@ -14,8 +15,9 @@ export class MainComponent implements OnInit {
 
   private sellers: Seller[];
 
-  constructor(private service : SellersService, private modalService: NgbModal, private router: Router) { }
+  constructor(private service : SellersService, private modalService: NgbModal, private router: Router, private toastrService : ToasterService) { }
 
+ 
   ngOnInit() {
 
     this.service.getSellers().subscribe(result => {
