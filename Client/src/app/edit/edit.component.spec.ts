@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit.component';
+
+
+const mockActiveModal = {
+  
+}
 
 describe('EditComponent', () => {
   let component: EditComponent;
@@ -8,7 +14,12 @@ describe('EditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditComponent ]
+      declarations: [ EditComponent ],
+      imports: [FormsModule],
+      providers: [{
+        provide: NgbActiveModal,
+        useValue: mockActiveModal
+      }]
     })
     .compileComponents();
   }));
