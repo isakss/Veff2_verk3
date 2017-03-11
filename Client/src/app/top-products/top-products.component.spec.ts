@@ -8,7 +8,7 @@ describe('TopProductsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopProductsComponent ]
+      declarations: [ TopProductsComponent ],
     })
     .compileComponents();
   }));

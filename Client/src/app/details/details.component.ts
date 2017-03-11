@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbTabset, NgbTab, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTab, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellersService, Seller, Product } from '../sellers.service';
 import { ProductComponent } from '../product-dlg/product-dlg.component';
 import { AllProductsComponent } from '../all-products/all-products.component';

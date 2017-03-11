@@ -1,14 +1,37 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AllProductsComponent } from './all-products.component';
+import { SellersService } from '../sellers.service';
 
 describe('AllProductsComponent', () => {
   let component: AllProductsComponent;
   let fixture: ComponentFixture<AllProductsComponent>;
 
+  const mockService = {
+  getProductsSuccess: true,
+  getProducts: function() {
+    return {
+      subscribe: function(success, error) {
+       /* length = 3;
+        if(mockService.getProductsSuccess === true) {
+          success();
+        }
+        else {
+          error();
+        }*/
+      }
+    }
+  }
+
+}
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AllProductsComponent ]
+      declarations: [ AllProductsComponent ], 
+      providers: [{
+        provide: SellersService, 
+        useValue: mockService
+}      ]
     })
     .compileComponents();
   }));
