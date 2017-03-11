@@ -1,18 +1,13 @@
-<p>
-    details works!
-</p>
-
+<button class="btn btn-lg btn-outline-primary" (click)="addSeller()">Bæta við</button>
 <div *ngIf="seller" class="container">
     <h2>{{seller.name}}</h2>
     <p>{{seller.category}}</p>
     <img src="{{seller.imagePath}}" alt="Mynd af seljanda">
-
-
 </div>
 
 <div class='Tabs'>
     <ngb-tabset>
-        <ngb-tab title='Products'>
+        <ngb-tab title='Products' (select)="hi(this)" (click)="hi(this)">
             <template ngbTabContent>
         <p>My name is doggo, I am the most pupperiest pupper in the world</p>
       </template>

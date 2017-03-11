@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title">Hi there!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Nafn: </span>
+        <input type="text" class="form-control" placeholder="Nafn" aria-describedby="basic-addon1" [(ngModel)]="seller.name">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Flokkur: </span>
+        <input type="text" class="form-control" placeholder="Flokkur" aria-describedby="basic-addon1" [(ngModel)]="seller.category">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Mynd: </span>
+        <input type="text" class="form-control" placeholder="Mynd" aria-describedby="basic-addon1" [(ngModel)]="seller.imagePath">
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+    <button type="button" class="btn btn-success" (click)="onOk()">Okay</button>
+</div>

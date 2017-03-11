@@ -3,13 +3,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellersService, Seller } from '../sellers.service';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  selector: 'app-product',
+  templateUrl: './product-dlg.component.html',
+  styleUrls: ['./product-dlg.component.css']
 })
-export class EditComponent implements OnInit {
+export class ProductComponent implements OnInit {
 
-  seller: Seller;
+  
   constructor(private activeModal: NgbActiveModal ) {}
     ngOnInit() {
      
@@ -19,6 +19,6 @@ export class EditComponent implements OnInit {
     this.activeModal.dismiss();
   }
   onOk(){
-    this.activeModal.close(this.seller);
+    this.activeModal.close(this.product);
   }
 }

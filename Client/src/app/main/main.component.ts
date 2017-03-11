@@ -31,12 +31,9 @@ export class MainComponent implements OnInit {
   }
 
    onEdit(seller: Seller) {
-      const modalInstance = this. modalService.open(EditComponent);
+      const modalInstance = this.modalService.open(EditComponent);
       modalInstance.componentInstance.seller = seller
       modalInstance.result.then(obj => {
-        console.log("Edit Dialog virkar!");
-        console.log("hi" + obj.name);
-     // console.log(modalInstance.componentInstance.seller);
       this.service.updateSeller(obj).subscribe(result => {
         console.log("The result: " + result.name);
         });
@@ -50,17 +47,12 @@ export class MainComponent implements OnInit {
     const modalInstance = this. modalService.open(EditComponent);
     modalInstance.componentInstance.seller = {
       name: "Jon",
-     // id: 2,
       category: "Business",
       imagePath: "https://www.timeshighereducation.com/Pictures/web/r/m/v/Meme___lazy_senior.jpg"
     }
-         // console.log(modalInstance.componentInstance.seller + "hi");
 
     //Passa að taka afrit af gögnunum svo notandi geti ekki ýtt á cancel í miðjunni og týnt þá gögnunum sem voru komin inn
     modalInstance.result.then(obj => {
-      console.log("Dialog virkar!");
-      console.log("hi" + obj.name);
-     // console.log(modalInstance.componentInstance.seller);
       this.service.newSeller(obj).subscribe(result => {
       console.log("The result: " + result.name);
     });

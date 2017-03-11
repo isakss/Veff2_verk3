@@ -11,6 +11,18 @@ export interface Seller {
   imagePath: string;
 }
 
+export interface Product {
+  id: number;
+  product: {
+    id: number,
+    name: string,
+		price: number,
+		quantitySold: number,
+		quantityInStock: number,
+    imagePath: string
+  }
+}
+
 @Injectable()
 export class SellersService {
 
@@ -35,15 +47,18 @@ export class SellersService {
     });
   }
 
+  getProducts(): Observable<Product[]> {
+    return this.http.get('http://localhost:5000/api/sellers/' + String(this.id) + '/products')
+    .map(response => {
+      return <Product[]> response.json();
+    });
+  }
+
   updateSeller(seller: Seller) : Observable<Seller> {
-    console.log("fer hingad?");
     let sellerString = JSON.stringify(seller);
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers});
-    console.log("id: " + seller.id);
-    console.log("name: " + seller.name);
-    //seller.id = String(seller.id);
-    return this.http.put(('http://localhost:5000/api/sellers/' + seller.id), seller)
+    return this.http.put(('http://localhost:5000/api/sellers/' + String(seller.id)), seller)
     .map(response => response.json());
 
   }

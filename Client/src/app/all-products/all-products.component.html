@@ -2,6 +2,10 @@
     all-products works!
 </p>
 
+<ul *ngIf="products">
+    <li *ngFor="let product of products">{{product.name}}</li>
+</ul>
+
 <ngb-tabset #t="ngbTabset">
     <ngb-tab title="Simple" id="foo">
         <template ngbTabContent>
