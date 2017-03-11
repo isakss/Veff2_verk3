@@ -17,6 +17,11 @@ export class TopProductsComponent implements OnInit {
         return a.quantitySold < b.quantitySold?1:a.quantitySold > b.quantitySold?-1:0
       });
       result.splice(10);
+      for (let i = 0; i < 10; i++) {
+          if (result[i].imagePath == "" || result[i].imagePath == undefined) {
+            result[i].imagePath = "https://shop.spandex.com/_ui/mobile/theme-blue/images/missing-store-300x300.jpg";
+        }
+       }
       this.products = result;
     });
   }
