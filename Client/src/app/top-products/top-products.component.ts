@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SellersService, Product } from '../sellers.service';
 
 @Component({
   selector: 'app-top-products',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopProductsComponent implements OnInit {
 
-  constructor() { }
+  products: Product[];
+  constructor(private service: SellersService) { }
 
   ngOnInit() {
+     this.service.getProducts().subscribe(result => {
+      result = result.sort(function(a,b) {
+        return a.quantitySold < b.quantitySold?1:a.quantitySold > b.quantitySold?-1:0
+      });
+      result.splice(10);
+      this.products = result;
+    });
   }
 
 }

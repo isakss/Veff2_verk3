@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h4 class="modal-title">Hi there!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+    <button type="button" class="close" aria-label="Close" (click)="onProductCancel()">
         <span aria-hidden="true">&times;</span>
       </button>
 </div>
@@ -8,20 +8,24 @@
 
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Nafn: </span>
-        <input type="text" class="form-control" placeholder="Nafn" aria-describedby="basic-addon1" [(ngModel)]="seller.name">
+        <input type="text" class="form-control" placeholder="Nafn" aria-describedby="basic-addon1" [(ngModel)]="product.name">
     </div>
     <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Flokkur: </span>
-        <input type="text" class="form-control" placeholder="Flokkur" aria-describedby="basic-addon1" [(ngModel)]="seller.category">
+        <span class="input-group-addon" id="basic-addon1">Verð: </span>
+        <input type="text" class="form-control" placeholder="Verð" aria-describedby="basic-addon1" [(ngModel)]="product.price">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Magn: </span>
+        <input type="text" class="form-control" placeholder="Magn" aria-describedby="basic-addon1" [(ngModel)]="product.quantityInStock">
     </div>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Mynd: </span>
-        <input type="text" class="form-control" placeholder="Mynd" aria-describedby="basic-addon1" [(ngModel)]="seller.imagePath">
+        <input type="text" class="form-control" placeholder="Mynd" aria-describedby="basic-addon1" [(ngModel)]="product.imagePath">
     </div>
 
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn btn-secondary" (click)="onProductCancel()">Cancel</button>
 
-    <button type="button" class="btn btn-success" (click)="onOk()">Okay</button>
+    <button type="button" class="btn btn-success" (click)="onProductOk()">Okay</button>
 </div>

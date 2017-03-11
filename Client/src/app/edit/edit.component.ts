@@ -11,7 +11,7 @@ export class EditComponent implements OnInit {
 
   seller: Seller;
   constructor(private activeModal: NgbActiveModal ) {}
-    ngOnInit() {
+  ngOnInit() {
      
   }
 

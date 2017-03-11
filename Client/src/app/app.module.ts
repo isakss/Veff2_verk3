@@ -14,6 +14,7 @@ import { SellersService } from './sellers.service';
 import { EditComponent } from './edit/edit.component';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { TopProductsComponent } from './top-products/top-products.component';
+import { ProductComponent } from './product-dlg/product-dlg.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TopProductsComponent } from './top-products/top-products.component';
     DetailsComponent,
     EditComponent,
     AllProductsComponent,
-    TopProductsComponent
+    TopProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,6 @@ import { TopProductsComponent } from './top-products/top-products.component';
   ], 
   providers: [SellersService],
   bootstrap: [AppComponent],
-  entryComponents: [EditComponent, AllProductsComponent]
+  entryComponents: [EditComponent, AllProductsComponent, TopProductsComponent, ProductComponent]
 })
 export class AppModule { }

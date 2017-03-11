@@ -12,15 +12,15 @@ export interface Seller {
 }
 
 export interface Product {
-  id: number;
-  product: {
+ // id: number;
+ // product: {
     id: number,
     name: string,
 		price: number,
 		quantitySold: number,
 		quantityInStock: number,
     imagePath: string
-  }
+  //}
 }
 
 @Injectable()
@@ -72,5 +72,19 @@ export class SellersService {
     return this.http.post("http://localhost:5000/api/sellers", body, options) // ...using post request
     .map(response => response.json()) // ...and calling .json() on the response to return data
     //.catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
-    }   
+  }  
+
+  newProduct(body: any) : Observable<Seller> {
+    let bodyString = JSON.stringify(body);
+    let headers    = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options    = new RequestOptions({ headers: headers }); // Create a request option
+    console.log(body);
+
+    return this.http.post('http://localhost:5000/api/sellers/'+ String(this.id) + '/products', body, options) 
+// ...using post request
+    .map(response => response.json()) // ...and calling .json() on the response to return data
+    //.catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }  
+  
+  
 }
