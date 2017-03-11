@@ -13,7 +13,11 @@ export class ProductComponent implements OnInit {
 
   constructor(private activeModal: NgbActiveModal ) {}
   ngOnInit() {
-     
+      /*this.product.name = "jon";
+      this.product.id = 0;
+      this.product.imagePath = "";
+      this.product.quantityInStock = 0;
+      this.product.quantitySold = 0;*/
   }
 
   onProductCancel(){

@@ -39,6 +39,7 @@ describe('AllProductsComponent', () => {
     fixture = TestBed.createComponent(AllProductsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    this.name = "jon";
   });
 
   it('should create', () => {
