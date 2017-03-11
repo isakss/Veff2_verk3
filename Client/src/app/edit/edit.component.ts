@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellersService, Seller } from '../sellers.service';
 
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
