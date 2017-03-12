@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { SellersService, Seller } from '../sellers.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { SellersService, Seller } from '../sellers.service';
 export class EditComponent implements OnInit {
 
   seller: Seller;
-  constructor(private activeModal: NgbActiveModal ) {}
+  empty = false;
+
+  constructor(private activeModal: NgbActiveModal, private toastrService: ToastrService) {}
   ngOnInit() {
      
   }
@@ -19,6 +22,12 @@ export class EditComponent implements OnInit {
     this.activeModal.dismiss();
   }
   onOk(){
-    this.activeModal.close(this.seller);
+    if(this.seller.name === "") {
+      this.empty = true;
+      this.toastrService.error('Nafn þarf að koma fram!', 'Villa!');
+    } else {
+      this.activeModal.close(this.seller);
+      this.toastrService.success('The seller was added/edited!', 'Success!');
+    } 
   }
 }
