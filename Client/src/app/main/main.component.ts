@@ -13,7 +13,7 @@ import { EditComponent } from '../edit/edit.component';
 export class MainComponent implements OnInit {
 
   private sellers: Seller[];
-
+  
   constructor(private service : SellersService, private modalService: NgbModal, private router: Router) { }
 
  

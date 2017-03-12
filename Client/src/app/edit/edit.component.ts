@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { SellersService, Seller } from '../sellers.service';
 
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',

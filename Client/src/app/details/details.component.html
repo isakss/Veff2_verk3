@@ -9,13 +9,12 @@
 
 <div class='Tabs'>
     <ngb-tabset>
-        <ngb-tab title='Products' (select)="hi(this)" (click)="hi(this)">
+        <ngb-tab title='Products'>
             <template ngbTabContent>
                 <app-all-products></app-all-products>
       </template>
         </ngb-tab>
-        <ngb-tab>
-            <template ngbTabTitle><b>Top Ten Products</b></template>
+        <ngb-tab title="Top Ten Products">
             <template ngbTabContent>
                 <app-top-products></app-top-products>
       </template>
