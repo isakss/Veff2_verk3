@@ -21,6 +21,7 @@ export class EditComponent implements OnInit {
 
   onCancel(){
     this.activeModal.dismiss();
+    this.toastrService.info('Seljanda var ekki bætt í hópinn', 'Hætt við aðgerð');
   }
   onOk(){
     if(this.seller.name === "") {
@@ -28,7 +29,7 @@ export class EditComponent implements OnInit {
       this.toastrService.error('Nafn þarf að koma fram!', 'Villa!');
     } else {
       this.activeModal.close(this.seller);
-      this.toastrService.success('The seller was added/edited!', 'Success!');
+      this.toastrService.success('Seljendur voru uppfærðir!', 'Aðgerð tókst!');
     } 
   }
 }
