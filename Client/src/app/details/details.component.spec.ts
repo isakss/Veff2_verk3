@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbTabset, NgbTab, NgbModal, NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { TemplateRef } from '@angular/core';
 import { DetailsComponent } from './details.component';
 import { AllProductsComponent } from '../all-products/all-products.component';
 import { TopProductsComponent } from '../top-products/top-products.component';
@@ -43,6 +43,7 @@ describe('DetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[ TemplateRef],
       declarations: [ DetailsComponent, AllProductsComponent, NgbTab, NgbTabset, TopProductsComponent ],
       providers: [{
         provide: SellersService, 
