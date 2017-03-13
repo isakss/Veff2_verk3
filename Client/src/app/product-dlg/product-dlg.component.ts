@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SellersService, Seller, Product } from '../sellers.service';
+import { Product } from '../sellers.service';
 
 @Component({
   selector: 'app-product',

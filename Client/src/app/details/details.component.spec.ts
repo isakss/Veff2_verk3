@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TemplateRef } from '@angular/core';
 import { NgbTabset, NgbTab, NgbModal, NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { DetailsComponent } from './details.component';
@@ -10,26 +11,40 @@ describe('DetailsComponent', () => {
   let component: DetailsComponent;
   let fixture: ComponentFixture<DetailsComponent>;
   const mockService = {
-  getSellerSuccess: true,
-  newProduct: function() {
-    return {
+    getSellerSuccess: true,
+    getProducts: function() {
+       return {
+         length: 1,
       subscribe: function(success, error) {
-       /* length = 3;
-        if(mockService.getProductsSuccess === true) {
+        if(mockService.getSellerSuccess === true) {
           success();
         }
         else {
           error();
-        }*/
+        }
       }
-    }
-  },
-  getSellerById: function() {
-    return {
-      subscribe: function(success, error) {
+       }
 
+    },
+    newProduct: function() {
+      return {
+        subscribe: function(success, error) {
+        /* length = 3;
+          if(mockService.getProductsSuccess === true) {
+            success();
+          }
+          else {
+            error();
+          }*/
+        }
       }
-    }
+    },
+    getSellerById: function() {
+      return {
+        subscribe: function(success, error) {
+
+        }
+      }
   }
 }
 
@@ -38,7 +53,8 @@ describe('DetailsComponent', () => {
   }
 
   const mockTabset = {
-
+    ngbTabTitle: "product",
+    ngbTabContent: "content"
   }
 
   beforeEach(async(() => {
@@ -57,10 +73,9 @@ describe('DetailsComponent', () => {
         useValue: mockTabset
       },
       {
-        provide: NgbTabset
-
-      }
-      ]
+        provide: NgbTabset,
+        useValue: mockTabset
+      }]
     })
     .compileComponents();
   }));

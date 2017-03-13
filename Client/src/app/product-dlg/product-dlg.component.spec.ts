@@ -3,26 +3,20 @@ import { FormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductComponent } from './product-dlg.component';
-import { SellersService, Seller, Product } from '../sellers.service';
+import { Product } from '../sellers.service';
 
 const mockActiveModal = {
  // name: "jon",
-  dismiss(name: "jon") {
+  dismiss() {
   }
 }
+
+
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
   let fixture: ComponentFixture<ProductComponent>;
-  let product: Product;
-
   
-
-  product.name = "jon";
-  product.id = 0;
-  product.imagePath = "";
-  product.quantityInStock = 0;
-  product.quantitySold = 0;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -39,7 +33,16 @@ describe('ProductComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductComponent);
     component = fixture.componentInstance;
+    component.product =  {name: "jon",
+      id: 0,
+      imagePath: "",
+      price: 0,
+      quantityInStock: 0,
+      quantitySold: 0
+    }
+
     fixture.detectChanges();
+    
   });
 
   it('should create', () => {
