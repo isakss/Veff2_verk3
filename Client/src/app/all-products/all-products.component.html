@@ -1,6 +1,6 @@
 <div class="container" *ngIf="products">
     <div class="row">
-        <div class="col-sm-2" *ngFor="let product of products">
+        <div class="col col-sm col-md col-lg col-xl" *ngFor="let product of products">
             <h3>{{product.name}}</h3>
             <img src="{{product.imagePath}}" alt="Mynd af vöru" />
             <p>{{product.price}}</p>

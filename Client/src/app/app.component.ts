@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import { SellersService, Seller } from './sellers.service';
-//import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-
 
 @Component({
   selector: 'app-root',
@@ -12,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'Sambland';
   
-  //private seller: Seller;
-  //constructor(private service : SellersService) { }
+  constructor() { }
 
   ngOnInit(){
  

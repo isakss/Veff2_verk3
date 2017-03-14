@@ -25,6 +25,9 @@ export class DetailsComponent implements OnInit {
       this.service.getProducts().subscribe(result => {
         this.products = result;
       });
+      this.service.newProduct({name: "gervivara"}).subscribe(result => {
+        this.products.push(result);
+      });
       console.log(this.seller.name);
     });
   }
@@ -33,14 +36,16 @@ export class DetailsComponent implements OnInit {
     const modalInstance = this.modalService.open(ProductComponent);
     modalInstance.componentInstance.product = {
       name: "Batman bolur",
-      price: "2500",
-      quantityInStock: "1",
+      price: 0,
+      quantityInStock: 0,
       imagePath: ""
     }
 
      modalInstance.result.then(obj => {
+      this.products.push(obj);
+
       this.service.newProduct(obj).subscribe(result => {
-      console.log("The result: " + result.name);
+        console.log("The result: " + obj.name);
     });
     }).catch(err => {
       console.log("Dialog virkar ekki :(");
