@@ -85,6 +85,14 @@ export class SellersService {
     .map(response => response.json()) // ...and calling .json() on the response to return data
     //.catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }  
+  updateProduct(product: Product) : Observable<Product> {
+    let sellerString = JSON.stringify(product);
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers});
+    return this.http.put(('http://localhost:5000/api/sellers/' + String(this.id)) + '/products' + String(product.id), product)
+    .map(response => response.json());
+
+  }
   
   
 }

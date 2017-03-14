@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SellersService, Product, Seller } from '../sellers.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProductComponent } from '../product-dlg/product-dlg.component';
 
 
 @Component({
@@ -12,7 +14,7 @@ export class AllProductsComponent implements OnInit {
   seller: Seller;
   products: Product[];
 
-  constructor(private service: SellersService) { }
+  constructor(private service: SellersService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.service.getProducts().subscribe(result => {
@@ -23,6 +25,18 @@ export class AllProductsComponent implements OnInit {
        }
       this.products = result;
     });
+  }
+
+  onEditProduct(product: Product) {
+      const modalInstance = this.modalService.open(ProductComponent);
+      modalInstance.componentInstance.product = product
+      modalInstance.result.then(obj => {
+      this.service.updateProduct(obj).subscribe(result => {
+        console.log("The result: " + result.name);
+        });
+      }).catch(err => {
+        console.log("Edit Dialog virkar ekki :(");
+      });
   }
 
 }
