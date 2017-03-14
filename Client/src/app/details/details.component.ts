@@ -48,7 +48,7 @@ export class DetailsComponent implements OnInit {
         console.log("The result: " + obj.name);
     });
     }).catch(err => {
-      console.log("Dialog virkar ekki :(");
+      console.log("Dialog lokað");
     });
   }
 

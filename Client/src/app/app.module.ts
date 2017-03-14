@@ -6,7 +6,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
+import {TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateService, translateLoaderFactory} from 'ng2-translate';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -50,7 +50,7 @@ import { ProductComponent } from './product-dlg/product-dlg.component';
     component: DetailsComponent
   }])
   ], 
-  providers: [SellersService],
+  providers: [ SellersService],
   bootstrap: [AppComponent],
   entryComponents: [EditComponent, AllProductsComponent, TopProductsComponent, ProductComponent]
 })

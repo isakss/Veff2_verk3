@@ -1,0 +1,16 @@
+{
+  "HOME": {
+  	"TITLE" : "Add",
+  	"SELLER" : "Seller",
+  	"CATEGORY" : "Category",
+  	"CHANGE SELLER" : "Edit seller",
+  	"DETAILS" : "View seller",
+  	"LOSTSELLER" : "Seller not found",
+  	"ALLPRODUCTS" : "All products",
+  	"TOPPRODUCTS" : "Top 10 products",
+  	"SORTBY" : "Sort by: ",
+ 	"TOPSELLER" : "Top sellers",
+  	"PRICE": "Price (highest to lowest)",
+    "SELECT": "Change language"
+  }
+}

@@ -6,12 +6,6 @@ import { FakeBackend } from 'ngx-http-test';
 
 import { SellersService, Seller, Product } from './sellers.service';
 
-const mockHttp = {
-  get: jasmine.createSpy("get"),
-  put: jasmine.createSpy("put"),
-  post: jasmine.createSpy("post")
-}
-
 describe('SellersService', () => {
 let backend: FakeBackend;
 let subject: SellersService;

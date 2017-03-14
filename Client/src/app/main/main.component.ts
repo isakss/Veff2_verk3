@@ -8,7 +8,7 @@ import { TranslateService } from 'ng2-translate';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
 
@@ -41,7 +41,7 @@ export class MainComponent implements OnInit {
           console.log("The result: " + result.name);
           });
       }).catch(err => {
-        console.log("Edit Dialog virkar ekki :(");
+        console.log("Edit lokað");
       });
       
   }
@@ -60,7 +60,7 @@ export class MainComponent implements OnInit {
       console.log("The result: " + result.name);
     });
     }).catch(err => {
-      console.log("Dialog virkar ekki :(");
+      console.log("Dialog lokað");
     });
 
   }
