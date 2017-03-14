@@ -21,7 +21,12 @@
         <tr *ngFor="let seller of sellers">
             <td> {{ seller.name }} </td>
             <td> {{ seller.category }} </td>
-            <td><button class="btn btn-md btn-success" (click)="onEdit(seller)">{{'HOME.CHANGE SELLER' | translate }}</button></td>
+
+            <td>
+                <button class="btn btn-md btn-success" (click)="onEdit(seller)">
+                 <i class="material-icons">edit </i>
+                 Breyta seljanda</button>
+            </td>
 
             <td><button class="btn btn-md btn-primary" (click)="goToDetails(seller.id)">{{'HOME.DETAILS' | translate }}</button></td>
         </tr>
