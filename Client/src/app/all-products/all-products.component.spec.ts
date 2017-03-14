@@ -42,7 +42,9 @@ describe('AllProductsComponent', () => {
     this.name = "jon";
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should display a list of all products', () => {
+    component.ngOnInit();
+    //expect(component.ngOnInit.).toBeTruthy();
+    expect(component.seller).toBeUndefined();
   });
 });
