@@ -33,8 +33,8 @@ export class DetailsComponent implements OnInit {
     const modalInstance = this.modalService.open(ProductComponent);
     modalInstance.componentInstance.product = {
       name: "Batman bolur",
-      price: "2500",
-      quantityInStock: "1",
+      price: 2500,
+      quantityInStock: 1,
       imagePath: ""
     }
 

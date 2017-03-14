@@ -19,12 +19,16 @@ export class ProductComponent implements OnInit {
 
   onProductCancel(){
     this.activeModal.dismiss();
-    this.toastrService.info('Vörunni var ekki bætt við', 'Hætt við aðgerð');
   }
   onProductOk(){
-    if(this.product.name === "")
-    {
+    if(this.product.name === "") {
       this.toastrService.error('Nafn vörunnar verður að koma fram!', 'Villa!');
+    } 
+    else if(isNaN(this.product.price) || this.product.price <= 0) {
+      this.toastrService.error('Verð vörunnar er ekki skilgreint rétt!', 'Villa!');
+    }
+    else if(isNaN(this.product.price)  || this.product.quantityInStock <= 0) {
+      this.toastrService.error('Magn vörunnar er ekki skilgreint rétt!', 'Villa!');
     } else {
     this.activeModal.close(this.product);
     this.toastrService.success('Nýrri vöru var bætt við!', 'Aðgerð tókst!');

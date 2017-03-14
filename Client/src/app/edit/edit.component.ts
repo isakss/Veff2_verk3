@@ -12,7 +12,6 @@ import { SellersService, Seller } from '../sellers.service';
 export class EditComponent implements OnInit {
 
   seller: Seller;
-  empty = false;
 
   constructor(private activeModal: NgbActiveModal, private toastrService: ToastrService) {}
   ngOnInit() {
@@ -24,7 +23,6 @@ export class EditComponent implements OnInit {
   }
   onOk(){
     if(this.seller.name === "") {
-      this.empty = true;
       this.toastrService.error('Nafn þarf að koma fram!', 'Villa!');
     } else {
       this.activeModal.close(this.seller);
