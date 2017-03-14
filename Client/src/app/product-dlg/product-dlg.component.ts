@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SellersService, Seller, Product } from '../sellers.service';
+import { Product } from '../sellers.service';
 import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
@@ -14,7 +14,11 @@ export class ProductComponent implements OnInit {
 
   constructor(private activeModal: NgbActiveModal, private toastrService: ToastrService) {}
   ngOnInit() {
-     
+      /*this.product.name = "jon";
+      this.product.id = 0;
+      this.product.imagePath = "";
+      this.product.quantityInStock = 0;
+      this.product.quantitySold = 0;*/
   }
 
   onProductCancel(){
