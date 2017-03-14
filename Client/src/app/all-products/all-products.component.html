@@ -4,7 +4,7 @@
         <div class="col-sm-2" *ngFor="let product of products">
             <h3>{{product.name}}</h3>
             <img src="{{product.imagePath}}" alt="Mynd af vöru" />
-            <p>{{product.price}}</p>
+            <p>Verð: {{product.price}} Kr.</p>
             <button class="btn btn-lg btn-outline-primary" (click)="onEditProduct(product)">
                 <i class="material-icons">edit </i>
                 Breyta vöru

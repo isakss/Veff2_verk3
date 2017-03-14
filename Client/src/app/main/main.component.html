@@ -1,4 +1,6 @@
-<button class="btn btn-lg btn-outline-primary" (click)="addSeller()">Bæta við</button>
+<div class="AddBtn">
+    <button class="btn btn-lg btn-success" (click)="addSeller()">Bæta við</button>
+</div>
 <template ngbModalContainer></template>
 
 
@@ -10,9 +12,13 @@
         <tr *ngFor="let seller of sellers">
             <td> {{ seller.name }} </td>
             <td> {{ seller.category }} </td>
-            <td><button class="btn btn-lg btn-outline-primary" (click)="onEdit(seller)">Breyta seljanda</button></td>
+            <td>
+                <button class="btn btn-md btn-success" (click)="onEdit(seller)">
+                 <i class="material-icons">edit </i>
+                 Breyta seljanda</button>
+            </td>
 
-            <td><button class="btn btn-lg btn-outline-primary" (click)="goToDetails(seller.id)">Sjá nánari lýsingu</button></td>
+            <td><button class="btn btn-md btn-primary" (click)="goToDetails(seller.id)">Sjá nánari lýsingu</button></td>
         </tr>
     </table>
 </div>

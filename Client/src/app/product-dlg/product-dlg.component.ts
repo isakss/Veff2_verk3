@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
 
   onProductCancel(){
     this.activeModal.dismiss();
+    this.toastrService.info('Vöru var ekki bætt við', 'Hætt við aðgerð');
   }
   onProductOk(){
     if(this.product.name === "") {
