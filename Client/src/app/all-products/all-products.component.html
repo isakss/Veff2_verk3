@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col">
         <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Raða eftir: </button>
+            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>{{ 'HOME.SORTBY' | translate }}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <button class="dropdown-item" (click)="sortByPrice()">Verði (Dýrast - ódýrast)</button>
-                <button class="dropdown-item" (click)="sortByQuantitySold()">Mest selt</button>
+                <button class="dropdown-item" (click)="sortByPrice()">{{'HOME.PRICE' | translate}}</button>
+                <button class="dropdown-item" (click)="sortByQuantitySold()">{{'HOME.TOPSELLER' | translate }}</button>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="col col-sm col-md col-lg col-xl" *ngFor="let product of products">
             <h3>{{product.name}}</h3>
             <img src="{{product.imagePath}}" alt="Mynd af vöru" />
-            <p>{{product.price}}</p>
+            <p>Verð: {{product.price}} Kr.</p>
         </div>
     </div>
 </div>

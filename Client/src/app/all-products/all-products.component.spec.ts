@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateService } from 'ng2-translate';
+import { Http } from '@angular/http';
 
 import { AllProductsComponent } from './all-products.component';
 import { SellersService, Product } from '../sellers.service';
@@ -36,6 +38,13 @@ describe('AllProductsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AllProductsComponent ], 
+      imports: [
+        TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+            deps: [Http]
+        })
+      ],
       providers: [{
         provide: SellersService, 
         useValue: mockService

@@ -1,0 +1,16 @@
+{
+  "HOME": {
+  	"TITLE" : "Bæta við",
+  	"SELLER" : "Nafn seljanda",
+  	"CATEGORY" : "Flokkur",
+  	"CHANGE SELLER" : "Breyta seljanda",
+  	"DETAILS" : "Nánari lýsing",
+  	"LOSTSELLER" : "Þetta er ekki seljandinn sem þú leitaðir að, vinsamlegast farðu til baka á seljandalista",
+  	"ALLPRODUCTS" : "Allar vörur",
+  	"TOPPRODUCTS" : "Topp 10 vinsælustu vörur",
+  	"SORTBY" : "Raða eftir: ",
+  	"TOPSELLER" : "Mest selt",
+  	"PRICE": "Verði (Dýrast - ódýrast)",
+    "SELECT": "Skipta um tungumál"
+  }
+}

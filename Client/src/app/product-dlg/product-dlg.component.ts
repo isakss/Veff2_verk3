@@ -14,15 +14,11 @@ export class ProductComponent implements OnInit {
 
   constructor(private activeModal: NgbActiveModal, private toastrService: ToastrService) {}
   ngOnInit() {
-      /*this.product.name = "jon";
-      this.product.id = 0;
-      this.product.imagePath = "";
-      this.product.quantityInStock = 0;
-      this.product.quantitySold = 0;*/
   }
 
   onProductCancel(){
     this.activeModal.dismiss();
+    this.toastrService.info('Vöru var ekki bætt við', 'Hætt við aðgerð');
   }
   onProductOk(){
     if(this.product.name === "") {

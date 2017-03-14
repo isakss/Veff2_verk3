@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgbTabset, NgbTab, NgbModal, NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTabset, NgbTab, NgbModal, NgbTabsetConfig, NgbAlert, NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateService } from 'ng2-translate';
+import { Http } from '@angular/http';
+
 import { DetailsComponent } from './details.component';
 import { AllProductsComponent } from '../all-products/all-products.component';
 import { TopProductsComponent } from '../top-products/top-products.component';
@@ -48,6 +51,9 @@ describe('DetailsComponent', () => {
   }
 }
 
+const mockAlert = {
+
+}
  const mockModal = {
     open: function() {}
   }
@@ -59,11 +65,17 @@ describe('DetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetailsComponent, AllProductsComponent, NgbTab, NgbTabset, TopProductsComponent ],
+      declarations: [ DetailsComponent, AllProductsComponent, NgbTab, NgbTabset, TopProductsComponent, NgbAlert ],
+      imports: [
+        TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+            deps: [Http]
+        })],
       providers: [{
         provide: SellersService, 
         useValue: mockService
-      },
+      }, NgbAlertConfig, NgbAlert,
       {
         provide: NgbModal,
         useValue: mockModal,

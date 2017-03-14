@@ -1,18 +1,29 @@
-<button class="btn btn-lg btn-outline-primary" (click)="addSeller()">Bæta við</button>
+<div>
+    <label>
+        {{ 'HOME.SELECT' | translate }}
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+        </select>
+      </label>
+</div>
+
+<div class="AddBtn">
+    <button class="btn btn-lg btn-success" (click)="addSeller()">{{ 'HOME.TITLE' | translate }}</button>
+</div>
 <template ngbModalContainer></template>
 
 
 <div *ngIf="sellers" class="container">
     <table>
-        <th>Nafn seljanda</th>
-        <th>Flokkur</th>
+        <th>{{'HOME.SELLER' | translate }}</th>
+        <th>{{'HOME.CATEGORY' | translate }}</th>
 
         <tr *ngFor="let seller of sellers">
             <td> {{ seller.name }} </td>
             <td> {{ seller.category }} </td>
-            <td><button class="btn btn-lg btn-outline-primary" (click)="onEdit(seller)">Breyta seljanda</button></td>
+            <td><button class="btn btn-md btn-success" (click)="onEdit(seller)">{{'HOME.CHANGE SELLER' | translate }}</button></td>
 
-            <td><button class="btn btn-lg btn-outline-primary" (click)="goToDetails(seller.id)">Sjá nánari lýsingu</button></td>
+            <td><button class="btn btn-md btn-primary" (click)="goToDetails(seller.id)">{{'HOME.DETAILS' | translate }}</button></td>
         </tr>
     </table>
 </div>

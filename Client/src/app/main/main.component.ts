@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SellersService, Seller } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditComponent } from '../edit/edit.component';
-
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-main',
@@ -13,19 +13,17 @@ import { EditComponent } from '../edit/edit.component';
 export class MainComponent implements OnInit {
 
   private sellers: Seller[];
-  hidden = true;
   
-  constructor(private service : SellersService, private modalService: NgbModal, private router: Router) { }
+  constructor(private translate: TranslateService, private service : SellersService, private modalService: NgbModal, private router: Router) { }
 
  
   ngOnInit() {
+      this.translate.addLangs(["is", "en"]);
+      this.translate.setDefaultLang("is");
 
-    this.service.getSellers().subscribe(result => {
+      this.service.getSellers().subscribe(result => {
       if(result != undefined && result != null) {
           this.sellers = result;
-      }
-      else {
-        this.hidden = false;
       }
     });
   }

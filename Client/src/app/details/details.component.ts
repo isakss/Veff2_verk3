@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbTab, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from 'ng2-translate';
+
 import { SellersService, Seller, Product } from '../sellers.service';
 import { ProductComponent } from '../product-dlg/product-dlg.component';
 import { AllProductsComponent } from '../all-products/all-products.component';
@@ -17,9 +19,13 @@ export class DetailsComponent implements OnInit {
   products: Product[];
 
   
-  constructor(private service: SellersService, private modalService: NgbModal) { }
+  constructor(private translate: TranslateService, private service: SellersService, private modalService: NgbModal) { }
 
   ngOnInit() {
+
+      this.translate.addLangs(["en", "is"]);
+      this.translate.setDefaultLang("is");
+  
      this.service.getSellerById().subscribe((result => {
         this.seller = result;
         this.service.getProducts().subscribe(result => {

@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-
+import {TranslateModule, TranslateLoader, TranslateStaticLoader} from 'ng2-translate';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -34,6 +34,7 @@ import { ProductComponent } from './product-dlg/product-dlg.component';
     HttpModule,
     NgbModule.forRoot(),
     ToastrModule.forRoot(),
+    TranslateModule.forRoot(),
     RouterModule.forRoot([{
     path: '',
     redirectTo: 'main',

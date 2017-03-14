@@ -47,8 +47,8 @@ describe('ProductComponent', () => {
     component.product =  {name: "jon",
       id: 0,
       imagePath: "",
-      price: 0,
-      quantityInStock: 0,
+      price: 1,
+      quantityInStock: 1,
       quantitySold: 0
     }
 
@@ -56,20 +56,44 @@ describe('ProductComponent', () => {
     
   });
 
-  it('should dismiss window on cancel', () => {
+  it('should dismiss the window on cancel', () => {
     component.onProductCancel();
     expect(mockActiveModal.dismiss).toHaveBeenCalled();
     expect(mockToastr.info).toHaveBeenCalled();
   });
 
-  it('should add product if successful', () => {
+  it('should add the product if successful', () => {
     component.onProductOk();
     expect(mockActiveModal.close).toHaveBeenCalled();
     expect(mockToastr.success).toHaveBeenCalled();
   });
 
-  it('should display error if not successful', () => {
+  it('should display an error if product name is empty', () => {
     component.product.name = "";
+    component.onProductOk();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
+
+  it('should display an error if price is not a number', () => {
+    component.product.price = NaN;
+    component.onProductOk();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
+
+  it('should display an error if price is below zero', () => {
+    component.product.price = -20;
+    component.onProductOk();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
+
+   it('should display an error if quantity is not a number', () => {
+    component.product.quantityInStock = NaN;
+    component.onProductOk();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
+
+  it('should display an error if quantity is below zero', () => {
+    component.product.quantityInStock = -20;
     component.onProductOk();
     expect(mockToastr.error).toHaveBeenCalled();
   });

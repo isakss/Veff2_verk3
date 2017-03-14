@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateService } from 'ng2-translate';
+import { Http } from '@angular/http';
 
 import { TopProductsComponent } from './top-products.component';
 import { SellersService, Product } from '../sellers.service';
@@ -25,11 +27,16 @@ describe('TopProductsComponent', () => {
     spyOn(mockService, "getProducts").and.callThrough();
 
     TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+            deps: [Http]
+        })],
       declarations: [ TopProductsComponent ],
       providers: [{
         provide: SellersService, 
         useValue: mockService
-      }]
+      }, TranslateService]
     })
     .compileComponents();
   }));
