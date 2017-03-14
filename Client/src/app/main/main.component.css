@@ -1,0 +1,11 @@
+table, th, td {
+    width: 80%;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    margin-top: 20px;
+}
+
+.AddBtn {
+    margin-left: 15px;
+}

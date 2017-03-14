@@ -1,4 +1,4 @@
-<button class="btn btn-lg btn-outline-primary" (click)="addProduct()">Bæta við</button>
+<button class="btn btn-lg btn-success" (click)="addProduct()">Bæta við</button>
 <template ngbModalContainer></template>
 
 <div *ngIf="seller" class="container">
@@ -7,7 +7,7 @@
     <img src="{{seller.imagePath}}" alt="Mynd af seljanda">
 </div>
 
-<!--<div class='Tabs'>
+<div class='Tabs'>
     <ngb-tabset #t="ngbTabset">
         <ngb-tab title='Products'>
             <template ngbTabContent>
@@ -21,4 +21,4 @@
       </template>
         </ngb-tab>
     </ngb-tabset>
-</div>-->
+</div>
