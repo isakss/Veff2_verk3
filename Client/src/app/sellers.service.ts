@@ -85,7 +85,7 @@ export class SellersService {
     let sellerString = JSON.stringify(product);
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers});
-    return this.http.put(('http://localhost:5000/api/sellers/' + String(this.id)) + '/products' + String(product.id), product)
+    return this.http.put(('http://localhost:5000/api/sellers/' + String(this.id)) + '/products/' + String(product.id), product)
     .map(response => response.json());
 
   }

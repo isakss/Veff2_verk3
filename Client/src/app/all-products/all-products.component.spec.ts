@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateService } from 'ng2-translate';
 import { Http } from '@angular/http';
+import { NgbTabset, NgbTab, NgbModal, NgbAlert, NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { AllProductsComponent } from './all-products.component';
 import { SellersService, Product } from '../sellers.service';
@@ -15,7 +16,6 @@ describe('AllProductsComponent', () => {
     getProducts: function() {
       return {
         subscribe: function(success, error) {
-         //length = 3;
          let items = {}
           if(mockService.getProductsSuccess === true) {
             return [{id: 0,
@@ -48,7 +48,7 @@ describe('AllProductsComponent', () => {
       providers: [{
         provide: SellersService, 
         useValue: mockService
-      }]
+      }, NgbModal]
     })
     .compileComponents();
   }));
