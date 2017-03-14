@@ -8,15 +8,15 @@
 
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Nafn: </span>
-        <input type="text" class="form-control" placeholder="Nafn" aria-describedby="basic-addon1" [(ngModel)]="product.name">
+        <input type="text" class="form-control" placeholder="Nafn" aria-describedby="basic-addon1" required [(ngModel)]="product.name">
     </div>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Verð: </span>
-        <input type="text" class="form-control" placeholder="Verð" aria-describedby="basic-addon1" [(ngModel)]="product.price">
+        <input type="text" class="form-control" placeholder="Verð" aria-describedby="basic-addon1" required [(ngModel)]="product.price">
     </div>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Magn: </span>
-        <input type="text" class="form-control" placeholder="Magn" aria-describedby="basic-addon1" [(ngModel)]="product.quantityInStock">
+        <input type="text" class="form-control" placeholder="Magn" aria-describedby="basic-addon1" required [(ngModel)]="product.quantityInStock">
     </div>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Mynd: </span>

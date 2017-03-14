@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SellersService, Seller, Product } from '../sellers.service';
+import { Product } from '../sellers.service';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-product',
@@ -11,15 +12,26 @@ export class ProductComponent implements OnInit {
 
   product: Product;
 
-  constructor(private activeModal: NgbActiveModal ) {}
+  constructor(private activeModal: NgbActiveModal, private toastrService: ToastrService) {}
   ngOnInit() {
-     
+      /*this.product.name = "jon";
+      this.product.id = 0;
+      this.product.imagePath = "";
+      this.product.quantityInStock = 0;
+      this.product.quantitySold = 0;*/
   }
 
   onProductCancel(){
     this.activeModal.dismiss();
+    this.toastrService.info('Vörunni var ekki bætt við', 'Hætt við aðgerð');
   }
   onProductOk(){
+    if(this.product.name === "")
+    {
+      this.toastrService.error('Nafn vörunnar verður að koma fram!', 'Villa!');
+    } else {
     this.activeModal.close(this.product);
+    this.toastrService.success('Nýrri vöru var bætt við!', 'Aðgerð tókst!');
+    }
   }
 }

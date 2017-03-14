@@ -6,8 +6,9 @@ import { SellersService } from '../sellers.service';
  const mockService = {
     getProductsSuccess: true,
     getProducts: function() {
+
       return {
-        subscribe: function(success, error) {
+        subscribe: function(result, error) {
         /* length = 3;
           if(mockService.getProductsSuccess === true) {
             success();
@@ -17,7 +18,7 @@ import { SellersService } from '../sellers.service';
           }*/
         }
       }
-    }
+    } 
   }
 
 describe('TopProductsComponent', () => {
@@ -40,6 +41,16 @@ describe('TopProductsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  /*it('should sort products', () => {
+    component.ngOnInit();
+    expect(mockService.getProducts).toHaveBeenCalled();
+
+  });*/
+
+  /*it('should have products equal the subscribe result', () => {
+    const input = []
+  });*/
 
   it('should create', () => {
     expect(component).toBeTruthy();

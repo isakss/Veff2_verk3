@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 
 import { AppComponent } from './app.component';
@@ -28,10 +29,11 @@ import { ProductComponent } from './product-dlg/product-dlg.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
-    ToasterModule,
     NgbModule.forRoot(),
+    ToastrModule.forRoot(),
     RouterModule.forRoot([{
     path: '',
     redirectTo: 'main',
