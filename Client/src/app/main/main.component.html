@@ -2,7 +2,7 @@
 <template ngbModalContainer></template>
 
 
-<div class="container">
+<div *ngIf="sellers" class="container">
     <table>
         <th>Nafn seljanda</th>
         <th>Flokkur</th>
@@ -15,4 +15,8 @@
             <td><button class="btn btn-lg btn-outline-primary" (click)="goToDetails(seller.id)">Sjá nánari lýsingu</button></td>
         </tr>
     </table>
+</div>
+
+<div *ngIf="!sellers">
+    <ngb-alert type="info"> Engir seljendur eru á skrá </ngb-alert>
 </div>

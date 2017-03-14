@@ -1,3 +1,15 @@
+<div class="row">
+    <div class="col">
+        <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Raða eftir: </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <button class="dropdown-item" (click)="sortByPrice()">Verði (Dýrast - ódýrast)</button>
+                <button class="dropdown-item" (click)="sortByQuantitySold()">Mest selt</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container" *ngIf="products">
     <div class="row">
         <div class="col col-sm col-md col-lg col-xl" *ngFor="let product of products">

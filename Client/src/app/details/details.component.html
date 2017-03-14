@@ -1,24 +1,31 @@
-<button class="btn btn-lg btn-outline-primary" (click)="addProduct()">Bæta við</button>
-<template ngbModalContainer></template>
-
-<div *ngIf="seller" class="container">
-    <h2>{{seller.name}}</h2>
-    <p>{{seller.category}}</p>
-    <img src="{{seller.imagePath}}" alt="Mynd af seljanda">
+<div *ngIf="!seller">
+    <ngb-alert type="info"> Þetta er ekki seljandinn sem þú leitaðir að, vinsamlegast farðu til baka á seljandalista </ngb-alert>
 </div>
 
-<div class='Tabs'>
-    <ngb-tabset>
-        <ngb-tab title='Products'>
-            <template ngbTabContent>
+<div *ngIf="seller">
+
+    <button class="btn btn-lg btn-outline-primary" (click)="addProduct()">Bæta við</button>
+    <template ngbModalContainer></template>
+
+    <div class="container">
+        <h2>{{seller.name}}</h2>
+        <p>{{seller.category}}</p>
+        <img src="{{seller.imagePath}}" alt="Mynd af seljanda">
+    </div>
+
+    <div class='Tabs'>
+        <ngb-tabset>
+            <ngb-tab title='Allar vörur'>
+                <template ngbTabContent>
                 <app-all-products></app-all-products>
             </template>
-        </ngb-tab>
-        <ngb-tab>
-            <template ngbTabTitle><b>Top Ten Products</b></template>
-            <template ngbTabContent>
+            </ngb-tab>
+            <ngb-tab>
+                <template ngbTabTitle><b>Topp 10 vinsælustu vörur</b></template>
+                <template ngbTabContent>
                 <app-top-products></app-top-products>
       </template>
-        </ngb-tab>
-    </ngb-tabset>
+            </ngb-tab>
+        </ngb-tabset>
+    </div>
 </div>

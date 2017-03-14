@@ -14,7 +14,7 @@ export class TopProductsComponent implements OnInit {
   ngOnInit() {
      this.service.getProducts().subscribe(result => {
       result = result.sort(function(a,b) {
-        return a.quantitySold < b.quantitySold?1:a.quantitySold > b.quantitySold?-1:0
+        return a.quantitySold < b.quantitySold ? 1:a.quantitySold > b.quantitySold?-1:0
       });
       result.splice(10);
       for (let i = 0; i < 10; i++) {
@@ -23,6 +23,18 @@ export class TopProductsComponent implements OnInit {
         }
        }
       this.products = result;
+    });
+  }
+
+  sortByPrice() {
+    this.products = this.products.sort(function(a,b) {
+        return a.price < b.price ? 1:a.price > b.price?-1:0
+    });  
+  }
+
+  sortByQuantitySold() {
+    this.products = this.products.sort(function(a,b) {
+        return a.quantitySold < b.quantitySold ? 1:a.quantitySold > b.quantitySold?-1:0
     });
   }
 

@@ -20,30 +20,24 @@ export class DetailsComponent implements OnInit {
   constructor(private service: SellersService, private modalService: NgbModal) { }
 
   ngOnInit() {
-     this.service.getSellerById().subscribe(result => {
-      this.seller = result;
-      this.service.getProducts().subscribe(result => {
-        this.products = result;
-      });
-      this.service.newProduct({name: "gervivara"}).subscribe(result => {
-        this.products.push(result);
-      });
-      console.log(this.seller.name);
-    });
+     this.service.getSellerById().subscribe((result => {
+        this.seller = result;
+        this.service.getProducts().subscribe(result => {
+          this.products = result;
+        });
+    }));
   }
 
   addProduct() {
     const modalInstance = this.modalService.open(ProductComponent);
     modalInstance.componentInstance.product = {
       name: "Batman bolur",
-      price: 0,
-      quantityInStock: 0,
+      price: 2500,
+      quantityInStock: 1,
       imagePath: ""
     }
 
      modalInstance.result.then(obj => {
-      this.products.push(obj);
-
       this.service.newProduct(obj).subscribe(result => {
         console.log("The result: " + obj.name);
     });
@@ -51,8 +45,6 @@ export class DetailsComponent implements OnInit {
       console.log("Dialog virkar ekki :(");
     });
   }
-  
-
 
 }
 

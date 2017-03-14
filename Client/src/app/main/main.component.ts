@@ -13,6 +13,7 @@ import { EditComponent } from '../edit/edit.component';
 export class MainComponent implements OnInit {
 
   private sellers: Seller[];
+  hidden = true;
   
   constructor(private service : SellersService, private modalService: NgbModal, private router: Router) { }
 
@@ -20,7 +21,12 @@ export class MainComponent implements OnInit {
   ngOnInit() {
 
     this.service.getSellers().subscribe(result => {
-      this.sellers = result;
+      if(result != undefined && result != null) {
+          this.sellers = result;
+      }
+      else {
+        this.hidden = false;
+      }
     });
   }
 
@@ -33,9 +39,9 @@ export class MainComponent implements OnInit {
       const modalInstance = this.modalService.open(EditComponent);
       modalInstance.componentInstance.seller = seller
       modalInstance.result.then(obj => {
-      this.service.updateSeller(obj).subscribe(result => {
-        console.log("The result: " + result.name);
-        });
+        this.service.updateSeller(obj).subscribe(result => {
+          console.log("The result: " + result.name);
+          });
       }).catch(err => {
         console.log("Edit Dialog virkar ekki :(");
       });

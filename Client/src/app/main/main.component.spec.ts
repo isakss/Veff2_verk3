@@ -27,7 +27,7 @@ const mockService = {
       }
     }
   },
-  updateSeller: function() {
+  updateSeller: function(seller) {
 
   },
   newSeller: function() {
@@ -87,7 +87,7 @@ describe('MainComponent', () => {
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;
     //component.modalService = mockModal;
-    fixture.detectChanges();
+    
   });
 
   it('should add seller', () => {
@@ -117,18 +117,36 @@ describe('MainComponent', () => {
       }
     });
 
-    /*it('should call modalService.open', () => {
+    it('should call modalService.open', () => {
       component.onEdit(mockService.sellersList[0]);
       let seller = mockService.sellersList[0];
       expect(mockRouter.navigate).toHaveBeenCalled();
-     //expect(component.modalService.open()).toHaveBeenCalled();
       
-    });*/
+      //expect(component.modalService.open()).toHaveBeenCalled();
+      
+    });
+   
+
+    it('should call open edit component', () => {
+      component.addSeller();
+      let seller = mockService.sellersList[0];
+      //expect(mockService.updateSeller).arguments(seller);
+      expect(mockRouter.navigate).toHaveBeenCalled();
+     //expect(component.modalService.open()).toHaveBeenCalled();
+     let result = mockService.updateSeller(seller);
+     expect( console.log).toHaveBeenCalledWith(result);
+      
+    });
+
 
     it('should get sellers onInit', () => {
     //  spyOn(mockService, 'getSellers').call(mockService.getSellers());
       //expect(mockService.getSellers).toHaveBeenCalled();
 
+    });
+    it('should create', () =>{
+      fixture.detectChanges();
+      expect(component).toBeTruthy();
     });
   });
 });

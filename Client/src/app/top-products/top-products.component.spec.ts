@@ -9,13 +9,8 @@ import { SellersService, Product } from '../sellers.service';
 
       return {
         subscribe: function(result, error) {
-        /* length = 3;
-          if(mockService.getProductsSuccess === true) {
-            result();
-          }
-          else {
-            error();
-          }*/
+          return result = [{name: "jon", id: 0, price: 1, quantityInStock: 1, quantitySold: 2, imagePath: ""},
+          {name: "jon2", id: 1, price: 2, quantityInStock: 1, quantitySold: 1, imagePath: ""}];
         }
       }
     } 
@@ -55,43 +50,32 @@ describe('TopProductsComponent', () => {
 
   });
 
-  it('should sort products', () => {
-   // result.sort();
-    let array: Product[];
+  xit('should sort products', () => {
+    mockService.getProducts();
 
-    mockService.getProducts().subscribe((result: Product[]) => array = result, (error: any) => false);
-    
-
-   // expect(array.sort).toHaveBeenCalled();
-
-
-    /*mockService.connection.subscribe (
-      (connection: MockConnection) => {
-        connection.mockRespond(new Response(
-          new ResponseOptions({
-            body: [{
-              name: "jon",
-              id: 0,
-              imagePath: "",
-              quantityInStock: 0,
-              quantitySold: 0   
-            }]
-          })));
-      });
-
-      mockService.getProducts().subscribe((result: Product[]) => {
-        expect(result.length).toBe(1);
-        expect(result[0].name).toBe("jon");
-      })*/
+    expect(component.products[0].imagePath).not.toBe("");
 
   });
 
-  /*it('should have products equal the subscribe result', () => {
-    const input = []
-  });*/
 
   it('should create', () => {
     expect(component).toBeTruthy();
     expect(mockService.getProducts).toHaveBeenCalled();
+  });
+
+  it('should sort products by price', () => {
+    component.products = [{name: "jon", id: 0, price: 1, quantityInStock: 1, quantitySold: 1, imagePath: ""},
+     {name: "jon2", id: 1, price: 2, quantityInStock: 1, quantitySold: 1, imagePath: ""}];
+    component.sortByPrice();
+
+    expect(component.products[0].id).toBe(1);
+  });
+
+  it('should sort products by quantitySold', () => {
+    component.products = [{name: "jon", id: 0, price: 1, quantityInStock: 1, quantitySold: 1, imagePath: ""},
+     {name: "jon2", id: 1, price: 2, quantityInStock: 1, quantitySold: 2, imagePath: ""}];
+    component.sortByQuantitySold();
+
+    expect(component.products[0].id).toBe(1);
   });
 });

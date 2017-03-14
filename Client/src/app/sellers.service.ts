@@ -24,6 +24,7 @@ export interface Product {
 export class SellersService {
 
   id: number;
+  //seller: Seller;
   
   constructor(private http: Http) { }
 
@@ -32,7 +33,7 @@ export class SellersService {
     return this.http.get("http://localhost:5000/api/sellers")
     .map(response => {
       return <Seller[]> response.json();
-    });
+    }).catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   getSellerById(): Observable<Seller> {

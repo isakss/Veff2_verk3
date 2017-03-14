@@ -25,4 +25,16 @@ export class AllProductsComponent implements OnInit {
     });
   }
 
+   sortByPrice() {
+    this.products = this.products.sort(function(a,b) {
+        return a.price < b.price ? 1:a.price > b.price?-1:0
+    });  
+  }
+
+  sortByQuantitySold() {
+    this.products = this.products.sort(function(a,b) {
+        return a.quantitySold < b.quantitySold ? 1:a.quantitySold > b.quantitySold?-1:0
+    });
+  }
+
 }

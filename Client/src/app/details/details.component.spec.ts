@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { TemplateRef } from '@angular/core';
 import { NgbTabset, NgbTab, NgbModal, NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
-
 import { DetailsComponent } from './details.component';
 import { AllProductsComponent } from '../all-products/all-products.component';
 import { TopProductsComponent } from '../top-products/top-products.component';
 import { SellersService, Product } from '../sellers.service';
 
+
 describe('DetailsComponent', () => {
   let component: DetailsComponent;
   let fixture: ComponentFixture<DetailsComponent>;
+  
   const mockService = {
     getSellerSuccess: true,
     getProducts: function() {

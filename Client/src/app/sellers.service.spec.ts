@@ -15,6 +15,8 @@ const mockHttp = {
 describe('SellersService', () => {
 let backend: FakeBackend;
 let subject: SellersService;
+let seller: Seller;
+let product: Product;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,13 +32,28 @@ let subject: SellersService;
   beforeEach(inject([FakeBackend, SellersService], (fakeBackend, service) => {
     backend = fakeBackend;
     subject = service;
+
+    seller = { id: 1,
+       name: "jon",
+       category: "Business",
+       imagePath: ""
+    };
+
+    product = {id: 1,
+      name: "jon",
+      price: 1000,
+      quantitySold: 1,
+      quantityInStock: 1,
+      imagePath: ""
+    };
+
   }))
 
-it('#login should call endpoint and return it\'s result', (done) => {
-  backend.expectGet("http://localhost:5000/api/sellers").respond({ name: 'blacksonic'});
+it('getSellers should return sellers', (done) => {
+  backend.expectGet("http://localhost:5000/api/sellers").respond({ name: 'jon'});
 
   subject.getSellers().subscribe((response) => {
-    expect(response).toEqual({name: 'blacksonic'});
+    expect(response).toEqual({name: 'jon'});
     done();
   })
 
@@ -45,252 +62,57 @@ it('#login should call endpoint and return it\'s result', (done) => {
     expect(service).toBeTruthy();
   }));
 
-  it('#login should call endpoint and return it\'s result', (done) => {
+  it('getSellerById should return a seller', (done) => {
     subject.id = 3;
-  backend.expectGet('http://localhost:5000/api/sellers/' + String(3)).respond({ name: 'blacksonic'});
+  backend.expectGet('http://localhost:5000/api/sellers/' + String(3)).respond({ name: 'jon'});
 
   subject.getSellerById().subscribe((response) => {
-    expect(response).toEqual({name: 'blacksonic'});
+    expect(response).toEqual({name: 'jon'});
     done();
   })
 
 });
 
-it('#login should call endpoint and return it\'s result', (done) => {
+it('getProducts should return products', (done) => {
   subject.id = 3;
-  backend.expectGet('http://localhost:5000/api/sellers/' + String(3) + '/products').respond({ name: 'blacksonic'});
+  backend.expectGet('http://localhost:5000/api/sellers/' + String(3) + '/products').respond({ name: 'jon', quantityInStock: 3});
 
   subject.getProducts().subscribe((response) => {
-    expect(response).toEqual({name: 'blacksonic'});
+    expect(response).toEqual({name: 'jon', quantityInStock: 3});
     done();
   })
 
 });
 
-it('#login should call endpoint and return it\'s result', (done) => {
-   // subject.id = 3;
-    let seller = { 
-      name: "jon",
-      id: 0,
-      category: " ",
-      imagePath: ""
-    }
-  backend.expectPut(('http://localhost:5000/api/sellers/' + String(seller.id)), seller).respond({ name: 'blacksonic'});
+it('updateSeller should update the seller', (done) => { 
+  backend.expectPut(('http://localhost:5000/api/sellers/' + String(seller.id)), seller).respond({ name: 'jona'});
 
   subject.updateSeller(seller).subscribe((response) => {
-    expect(response).toEqual({name: 'blacksonic'});
+    expect(response).toEqual({name: 'jona'});
     done();
   })
 
 });
 
-it('#login should call endpoint and return it\'s result', (done) => {
-   // subject.id = 3;
-    let seller = { 
-      name: "jon",
-      id: 0,
-      category: " ",
-      imagePath: ""
-    }
-  backend.expectPut(('http://localhost:5000/api/sellers/' + String(seller.id)), seller).respond({ name: 'blacksonic'});
+it('newSeller should add a seller', (done) => {
+  backend.expectPost(("http://localhost:5000/api/sellers"), seller).respond({ name: 'jona'});
 
-  subject.updateSeller(seller).subscribe((response) => {
-    expect(response).toEqual({name: 'blacksonic'});
+  subject.newSeller(seller).subscribe((response) => {
+    expect(response).toEqual({name: 'jona'});
     done();
   })
 
-  });
+});
 
-  it('should call server with a get request for products', inject([SellersService, MockBackend], (service: SellersService) => {
-      const mockResponse = {
-            data: [
-              { id: 0,
-                name: 'Product 1',
-                price: 0,
-                quantitySold: 0,
-                quantityInStock: 0,
-                imagePath: ''},
-              { id: 0,
-                name: 'Product 2',
-                price: 0,
-                quantitySold: 0,
-                quantityInStock: 0,
-                imagePath: '' },
-            ]
-          };
-      let mockBackend = new MockBackend;
-      mockBackend.connections.subscribe((connection) => {
-          connection.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(mockResponse)
-          })));
-        });
+it('newProduct should add a product', (done) => {
+  subject.id = 3;
+  backend.expectPost(('http://localhost:5000/api/sellers/'+ String(subject.id) + '/products'), product).respond({ name: 'jona', quantityInStock: 3});
 
-        service.getProducts().subscribe((products) => {
-          expect(products.length).toBe(2);
-          expect(products[0].name).toEqual('Product 1');
-          expect(products[1].name).toEqual('Product 2');
-        });
-      
-    //  expect(true).toBe(true);
-  }));
+  subject.newProduct(product).subscribe((response) => {
+    expect(response).toEqual({name: 'jona', quantityInStock: 3});
+    done();
+  })
 
-   it('should call server with a get request for sellerById', inject([SellersService, MockBackend], (service: SellersService) => {
-      const mockResponse = 
-              { id: 0,
-                name: 'Jon 1',
-                category: '',
-                imagePath: ''};
-            
-      let mockBackend = new MockBackend;
-      mockBackend.connections.subscribe((connection) => {
-          connection.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(mockResponse)
-          })));
-        });
+});
 
-        service.getSellerById().subscribe((seller) => {
-          expect(seller.name).toEqual('Jon 1');
-        });
-      
-    //  expect(true).toBe(true);
-  }));
-
-  it('should call server with a post request for products', inject([SellersService, MockBackend], (service: SellersService) => {
-      const mockResponse = {
-            data: [
-              { id: 0,
-                name: 'Product 1',
-                price: 0,
-                quantitySold: 0,
-                quantityInStock: 0,
-                imagePath: ''},
-              { id: 0,
-                name: 'Product 2',
-                price: 0,
-                quantitySold: 0,
-                quantityInStock: 0,
-                imagePath: '' },
-            ]
-          };
-
-      let product = { id: 3,
-                name: 'Product 3',
-                price: 0,
-                quantitySold: 0,
-                quantityInStock: 0,
-                imagePath: ''}
-      
-      let mockBackend = new MockBackend;
-      mockBackend.connections.subscribe((connection) => {
-          connection.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(mockResponse)
-          })));
-        });
-
-        service.newProduct(product).subscribe((products) => {
-          expect(products[0].name).toEqual('Product 1');
-          expect(products[1].name).toEqual('Product 2');
-        });
-  }));
-
-
-  it('should call server with a post request for seller', inject([SellersService, MockBackend], (service: SellersService) => {
-      const mockResponse = [
-            
-              { id: 0,
-                name: 'Jon 1',
-                category: '',
-                imagePath: ''},
-             { id: 0,
-                name: 'Jon 2',
-                category: '',
-                imagePath: ''}
-      ];
-
-      let seller = { id: 2,
-                name: 'Jon 3',
-                category: '',
-                imagePath: ''}
-      
-      let mockBackend = new MockBackend;
-      mockBackend.connections.subscribe((connection) => {
-          connection.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(mockResponse)
-          })));
-        });
-
-        service.newSeller(seller).subscribe((sellers) => {
-          expect(sellers[0].name).toEqual('Jon 1');
-          expect(sellers[2].name).toEqual('Jon 3');
-        });
-  }));
-
-  it('should call server with a put request for seller', inject([SellersService, MockBackend], (service: SellersService) => {
-
-      let seller = { id: 0,
-                name: 'Jon 3',
-                category: '',
-                imagePath: ''}
-    return service.updateSeller(seller).toPromise().then( (result) => {         
-     expect(true).toBe(true);
-    });
-     /* const mockResponse = {
-            data: [
-              { id: 0,
-                name: 'Jon 1',
-                category: '',
-                imagePath: ''},
-             { id: 0,
-                name: 'Jon 2',
-                category: '',
-                imagePath: ''}]
-          };
-
-      let seller = { id: 0,
-                name: 'Jon 3',
-                category: '',
-                imagePath: ''}
-      
-      let mockBackend = new MockBackend;
-      mockBackend.connections.subscribe((connection) => {
-          connection.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(mockResponse)
-          })));
-        });
-
-        service.updateSeller(seller).toPromise().then((sellers) => {
-          expect(sellers[0].name).toEqual('Jon 1');
-          expect(sellers[2].name).toEqual('Jon 3');
-        });*/
-  }));
-
-
-  it('should call server with a get request for sellers', inject([SellersService, MockBackend], (service: SellersService) => {
-      const mockResponse =
-              [{ id: 0,
-                name: 'Jon 1',
-                category: '',
-                imagePath: ''}];
-      
-      let mockBackend = new MockBackend;
-      mockBackend.connections.subscribe((connection) => {
-          connection.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(mockResponse)
-          })));
-        });
-
-        service.getSellers().subscribe((sellers) => {
-          expect(sellers.length).toEqual(2);
-          expect(sellers[0].name).toEqual('Product 1');
-          expect(sellers[1].name).toEqual('Product 2');
-        });
-  }));
-
-  it('should call server with a get request for sellerId', inject([SellersService], (service: SellersService) => {
-      service.getSellerById();
-      
-            expect(true).toBe(true);
-
-      //expect(mockHttp.get).toHaveBeenCalled();
-  }))
 });

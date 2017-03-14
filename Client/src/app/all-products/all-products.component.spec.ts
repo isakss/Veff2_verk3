@@ -51,14 +51,30 @@ describe('AllProductsComponent', () => {
     this.name = "jon";
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should display a list of all products', () => {
+    expect(component.seller).toBeUndefined();
   });
 
-  it('should set imagePath if empty', () => {
+  xit('should set imagePath if empty', () => {
     spyOn(mockService, "getProducts").and.callThrough();
     expect(mockService.getProducts).toHaveBeenCalled();
     expect(component.products.length).toEqual(1);
     expect(component.products[0].imagePath).not.toEqual("");
+  });
+
+  it('should sort products by price', () => {
+    component.products = [{name: "jon", id: 0, price: 1, quantityInStock: 1, quantitySold: 1, imagePath: ""},
+     {name: "jon2", id: 1, price: 2, quantityInStock: 1, quantitySold: 1, imagePath: ""}];
+    component.sortByPrice();
+
+    expect(component.products[0].id).toBe(1);
+  });
+
+  it('should sort products by quantitySold', () => {
+    component.products = [{name: "jon", id: 0, price: 1, quantityInStock: 1, quantitySold: 1, imagePath: ""},
+     {name: "jon2", id: 1, price: 2, quantityInStock: 1, quantitySold: 2, imagePath: ""}];
+    component.sortByQuantitySold();
+
+    expect(component.products[0].id).toBe(1);
   });
 });
